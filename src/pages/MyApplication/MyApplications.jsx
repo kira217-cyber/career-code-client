@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react';
 import ApplicationStats from './ApplicationStats';
 import ApplicationList from './ApplicationList';
-import { myApplicationsPromise } from '../../Api/applicationsApi';
 import uesAuth from '../../Hooks/uesAuth';
+import useCustomApi from '../../Api/useCustomApi';
 
 const MyApplications = () => {
+
+    const{myApplicationsPromise} = useCustomApi();
 
     const {user} = uesAuth()
 

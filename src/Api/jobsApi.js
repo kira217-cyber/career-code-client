@@ -1,1 +1,9 @@
-export const jobsCreatedByPromise = (email) => fetch(`http://localhost:3000/jobs/applications?email=${email}`).then(res=>res.json())
+export const jobsCreatedByPromise = (email, accessToken) =>
+  fetch(
+    `https://job-portal-server-tau-gray.vercel.app/jobs/applications?email=${email}`,
+    {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    }
+  ).then((res) => res.json());

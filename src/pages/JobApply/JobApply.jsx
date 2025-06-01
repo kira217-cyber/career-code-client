@@ -30,7 +30,10 @@ const JobApply = () => {
     // axios send in the database
 
     axios
-      .post("http://localhost:3000/applications", application)
+      .post(
+        "https://job-portal-server-tau-gray.vercel.app/applications",
+        application
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

@@ -10,9 +10,13 @@ const ViewApplications = () => {
   const handleStatusChange = (e, appId) => {
     console.log(e.target.value, appId);
 
-    axios.patch(`http://localhost:3000/applications/${appId}`, {
-        status: e.target.value,
-      })
+    axios
+      .patch(
+        `https://job-portal-server-tau-gray.vercel.app/applications/${appId}`,
+        {
+          status: e.target.value,
+        }
+      )
       .then((res) => {
         if (res.data.modifiedCount) {
           Swal.fire({
@@ -54,7 +58,7 @@ const ViewApplications = () => {
                 <td>Quality Control Specialist</td>
                 <td>
                   <select
-                    onChange={e => handleStatusChange(e, app._id)}
+                    onChange={(e) => handleStatusChange(e, app._id)}
                     defaultValue={app.status}
                     className="select"
                   >

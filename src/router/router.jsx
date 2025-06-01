@@ -11,60 +11,75 @@ import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
 
-
 export const router = createBrowserRouter([
-    {
-        path:'/',
-        Component:MainLayout,
-        children:[
-            {
-                index:true,
-                Component:Home
-            },
-            {
-                path:'register',
-                Component:Register,
-            },
-            {
-                path:'login',
-                Component:Login,
-            },
-            {
-                path:'/jobs/:id',
-                loader:({params})=>fetch(`http://localhost:3000/jobs/${params.id}`),
-                Component:JobDetails,
-            },
-            {
-                path:'/jobApply/:id',
-                element:<PrivetRouter>
-                    <JobApply></JobApply>
-                </PrivetRouter>
-            },
-            {
-                path:'myApplications',
-                element:<PrivetRouter>
-                    <MyApplications></MyApplications>
-                </PrivetRouter>
-            },
-            {
-                path:'addJob',
-                element:<PrivetRouter>
-                    <AddJob></AddJob>
-                </PrivetRouter>
-            },
-            {
-                path:'myPostedJobs',
-                element:<PrivetRouter>
-                    <MyPostedJobs></MyPostedJobs>
-                </PrivetRouter>
-            },
-             {
-                path:'applications/:job_id',
-                element:<PrivetRouter>
-                    <ViewApplications></ViewApplications>
-                </PrivetRouter>,
-                loader:({params})=>fetch(`http://localhost:3000/applications/job/${params.job_id}`)
-            }
-        ]
-    }
-])
+  {
+    path: "/",
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+      {
+        path: "login",
+        Component: Login,
+      },
+      {
+        path: "/jobs/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://job-portal-server-tau-gray.vercel.app/jobs/${params.id}`
+          ),
+        Component: JobDetails,
+      },
+      {
+        path: "/jobApply/:id",
+        element: (
+          <PrivetRouter>
+            <JobApply></JobApply>
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "myApplications",
+        element: (
+          <PrivetRouter>
+            <MyApplications></MyApplications>
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "addJob",
+        element: (
+          <PrivetRouter>
+            <AddJob></AddJob>
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "myPostedJobs",
+        element: (
+          <PrivetRouter>
+            <MyPostedJobs></MyPostedJobs>
+          </PrivetRouter>
+        ),
+      },
+      {
+        path: "applications/:job_id",
+        element: (
+          <PrivetRouter>
+            <ViewApplications></ViewApplications>
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://job-portal-server-tau-gray.vercel.app/applications/job/${params.job_id}`
+          ),
+      },
+    ],
+  },
+]);
